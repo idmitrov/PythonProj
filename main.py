@@ -7,12 +7,9 @@ from src import input
 
 try:
     textByFileName = {}
-    
+    result = {}
     # READ INPUT
     terms, resourcesDir = input.getInput()
-    # resourcesDir = 'resources'
-    # terms = ['simple']
-    
     # GET PDFs TEXT
     dirs = listdir(resourcesDir)
     for term in terms:
@@ -20,10 +17,12 @@ try:
             if fileName.endswith('.pdf'):
                 text = reader.pdfToText(fileName, resourcesDir)
                 textByFileName[fileName] = text
-
-        occurrences = searcher.getOccurrences(term, textByFileName)
-    # SEARCH INUT IN PDFs
-
+        # SEARCH INPUT IN PDFs
+        occurrences = searcher.getOccurrencesByFileName(term, textByFileName)
+        result[term] = occurrences
     # EXPORT CSV
+    sortedResult = sorted(result, reverse = True)
+    writter.exportCSV(result)
+    print("SUCCESS!!!")
 except Exception as e:
     print(str(e))

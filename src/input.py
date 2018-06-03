@@ -1,5 +1,5 @@
 def getInput():
-    termCount = input("Enter the number of terms you are going to search for:")
+    termCount = input("Enter the number of terms you are going to search for: ")
     terms = []
     for x in range(1, int(termCount) + 1):
         currentTerm = input("Enter term №" + str(x) + ": ")

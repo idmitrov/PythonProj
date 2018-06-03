@@ -1,11 +1,11 @@
 import re
 
-def getOccurrences(term, collection):
-    result = None
+def getOccurrencesByFileName(term, collection):
+    result = []
     term = term.lower()
     
     for fileName in collection:
         text = collection[fileName]
-        result = text.lower().count(term)
+        result.append({fileName: text.lower().count(term)})
 
     return result
