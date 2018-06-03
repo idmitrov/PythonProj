@@ -1,9 +1,7 @@
 import PyPDF2
  
-def pdfToText(fileName, pathToFile = 'resources'):
+def pdfToText(fullFilePath):
     text = ''
-
-    fullFilePath = '{0}/{1}.pdf'.format(pathToFile, fileName)
 
     pdfFileObj = open(fullFilePath, 'rb')
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
