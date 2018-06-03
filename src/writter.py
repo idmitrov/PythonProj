@@ -1,9 +1,12 @@
 import csv
-with open('statistics.csv', 'w', newline='') as csvfile:
-    fieldnames = ['first_name', 'last_name']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+import uuid
 
-    writer.writeheader()
-    writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
-    writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
-    writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
+def exportCSV(orderedTermsData):
+    with open('statistics-' + uuid.uuid4().hex + '.csv', 'w', newline='') as csvfile:
+        fieldnames = ['Term Name', 'File Name', 'Term Occurrences']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for term in orderedTermsData:
+            for file in orderedTermsData[term]:
+                for fileName, occurrences in file.items():
+                    writer.writerow({'Term Name': term, 'File Name': fileName, 'Term Occurrences': occurrences})
