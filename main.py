@@ -1,28 +1,16 @@
-import os
-cwd = os.getcwd()
-import sys
-sys.path.insert(0, cwd + '/src')
-import writter
-import reader
-import searcher
+from src import reader
+from src import writter
+from src import searcher
 
-# writter.test()
-print(cwd)
-termCount = input("Enter the number of terms you are going to search for:")
-print(termCount)
-for x in range(1, termCount + 1):
-    print(x)    
-  # Python 3
-#import reader, writer, searcher
+try:
+    # READ PDFs
+    text = pdfText = reader.pdfToText('sample')
+    print(text)
 
-# try
-    #1 reader
-        #.read(input)
-        #.extractText()
-    
-    #2 Searcher
-        #.find(occurrences)
+    #READ INPUT
 
-    #3 writer.write(occurrences, ouput)
-# catch e
-    # print e
+    #SEARCH INUT IN PDF
+
+    #EXPORT CSV
+except Exception as e:
+    print(str(e))

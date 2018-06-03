@@ -1,10 +1,15 @@
-# import PyPDF2
+import PyPDF2
  
-# pdfFileObj = open('example.pdf', 'rb')
-# pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-  
-# pageObj = pdfReader.getPage(0)
+def pdfToText(fileName, pathToFile = 'resources/'):
+    text = ''
 
-# print(pageObj.extractText())
+    pdfFileObj = open(pathToFile + fileName + '.pdf', 'rb')
+    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+    pdfPagesCount = pdfReader.getNumPages()
 
-# pdfFileObj.close()
+    while(pdfPagesCount > 1):
+        page = pdfReader.getPage(pdfPagesCount - 1)
+        text += page.extractText()
+
+        pdfPagesCount -= 1
+    return text
