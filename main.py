@@ -4,7 +4,7 @@ from src import searcher
 
 try:
     # READ PDFs
-    text = pdfText = reader.pdfToText('sample')
+    text = pdfText = reader.pdfToText('sample', 'resources')
     print(text)
 
     #READ INPUT
