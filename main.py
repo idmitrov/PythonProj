@@ -1,6 +1,7 @@
 from src import reader
 from src import writter
 from src import searcher
+from src import input
 
 try:
     # READ PDFs
@@ -8,7 +9,8 @@ try:
     print(text)
 
     #READ INPUT
-
+    terms, pdfFolderPath = input.getInput()
+    print(terms, pdfFolderPath)
     #SEARCH INUT IN PDF
 
     #EXPORT CSV
