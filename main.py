@@ -10,17 +10,20 @@ try:
     
     # READ INPUT
     terms, resourcesDir = input.getInput()
-
+    # resourcesDir = 'resources'
+    # terms = ['simple']
+    
     # GET PDFs TEXT
     dirs = listdir(resourcesDir)
-    for fileName in dirs:
-        if fileName.endswith('.pdf'):
-            textByFileName[fileName] = reader.pdfToText(fileName, resourcesDir)
+    for term in terms:
+        for fileName in dirs:
+            if fileName.endswith('.pdf'):
+                text = reader.pdfToText(fileName, resourcesDir)
+                textByFileName[fileName] = text
 
-    #SEARCH INUT IN PDFs
-    occurrences = searcher.getOccurrences(textByFileName)
-    print(occurrences)
+        occurrences = searcher.getOccurrences(term, textByFileName)
+    # SEARCH INUT IN PDFs
 
-    #EXPORT CSV
+    # EXPORT CSV
 except Exception as e:
     print(str(e))
