@@ -1,8 +1,9 @@
 import PyPDF2
  
-def pdfToText(fullFilePath):
+def pdfToText(fileName, fileDir = 'resources'):
     text = ''
 
+    fullFilePath = '{0}/{1}'.format(fileDir, fileName)
     pdfFileObj = open(fullFilePath, 'rb')
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     pdfPagesCount = pdfReader.getNumPages()
